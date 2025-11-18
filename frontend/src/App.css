@@ -1,0 +1,428 @@
+/* ==== CÀI ĐẶT CHUNG (Nền tối) ==== */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #1a1a2e; /* Nền tối chính */
+    color: #e0e0e0; /* Chữ sáng */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ==== ỨNG DỤNG CHÍNH ==== */
+.app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2.5rem 1rem;
+    width: 100%;
+}
+
+/* ==== KHỐI GLASS BASE (Tạo hiệu ứng Glassmorphism) ==== */
+/* Dùng làm nền cho .form và .list */
+.glass-base {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    border-radius: 18px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+}
+
+/* Loại bỏ class .glass cũ, thay thế bằng .glass-base */
+.glass:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.01);
+}
+
+/* ==== HEADER ==== */
+.header {
+    text-align: center;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    max-width: 700px;
+}
+
+.header h1 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(90deg, #a78bfa, #60a5fa);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.header p {
+    color: #a0a0a0;
+}
+
+.icon {
+    color: #9b8cff;
+    font-size: 2.5rem;
+}
+
+/* ==== BUTTON KẾT NỐI ==== */
+.connect-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: linear-gradient(90deg, #7b5fff, #5f9fff);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 30px;
+    transition: 0.3s ease;
+    font-size: 1rem;
+    box-shadow: 0 4px 15px rgba(123, 95, 255, 0.3);
+}
+
+.connect-btn:hover {
+    transform: translateY(-2px) scale(1.02);
+}
+
+/* ==== FORM (ÁP DỤNG GLASSMOPRHISM) ==== */
+.form {
+    /* Copy thuộc tính glass-base vào đây */
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    border-radius: 18px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+    /* End copy */
+
+    width: 100%;
+    max-width: 700px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 2rem;
+}
+
+.form input, .form select {
+    padding: 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.2);
+    color: #e0e0e0;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.form input:focus, .form select:focus {
+    border-color: #60a5fa;
+    outline: none;
+    box-shadow: 0 0 5px rgba(96, 165, 250, 0.5);
+}
+
+.form select option {
+    background-color: #1a1a2e;
+    color: #e0e0e0;
+}
+
+.upload {
+    text-align: center;
+    padding: 25px;
+    border: 2px dashed #60a5fa55;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+    color: #a0a0a0;
+}
+
+.upload:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: #60a5fa;
+}
+
+/* ==== BUTTON TRONG FORM ==== */
+.btns {
+    display: flex;
+    gap: 15px;
+    margin-top: 5px;
+}
+
+.btns button {
+    flex: 1;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.btns button:hover:not(:disabled) {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.btns button:first-child { /* Upload IPFS */
+    background-color: #3b3b5c;
+    color: #e0e0e0;
+}
+
+.btns button.primary {
+    background: linear-gradient(90deg, #7b5fff, #5f9fff);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ==== HIỂN THỊ PHÍ (MỚI) ==== */
+.fee-display {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 10px;
+    padding: 4px 10px;
+    background-color: #a78bfa;
+    color: #1a1a2e;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.9em;
+}
+
+/* ==== TRẠNG THÁI (STATUS) ==== */
+.status {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: rgba(96, 165, 250, 0.1);
+    color: #60a5fa;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* ==== DANH SÁCH BẢNG (ÁP DỤNG GLASSMOPRHISM) ==== */
+.list {
+    /* Copy thuộc tính glass-base vào đây */
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    border-radius: 18px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+    /* End copy */
+
+    width: 100%;
+    max-width: 850px;
+    padding: 2rem;
+}
+
+.list h2 {
+    color: #a78bfa;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.table-container {
+    margin-top: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    overflow-x: auto;
+}
+
+.songs-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95em;
+    min-width: 700px;
+}
+
+.songs-table thead tr {
+    background-color: #2a2a47;
+    color: #a78bfa;
+    text-align: left;
+    font-weight: 700;
+}
+
+.songs-table th,
+.songs-table td {
+    padding: 14px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.songs-table tbody tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.songs-table tbody tr:nth-of-type(even) {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.songs-table tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.songs-table td:nth-child(6),
+.songs-table td:nth-child(7) {
+    text-align: center;
+}
+
+.link-btn {
+    background: none;
+    border: none;
+    color: #60a5fa;
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: 500;
+    padding: 0;
+}
+
+/* ==== TAG TRẠNG THÁI ==== */
+.status-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 13px;
+    padding: 4px 10px;
+    border-radius: 9999px;
+    font-weight: 500;
+}
+.status-tag.active {
+    background: #22c55e33;
+    color: #4ade80;
+}
+.status-tag.revoked {
+    background: #f8717133;
+    color: #fca5a5;
+}
+
+/* ==== FOOTER ==== */
+footer {
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #a0a0a0;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* ==== MODAL CHỨNG NHẬN ==== */
+
+.certificate-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.certificate-content {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 700px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    position: relative;
+    border: 5px double #7b5fff;
+    text-align: center;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #333;
+}
+
+.certificate-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 15px;
+}
+
+.certificate-header h2 {
+    color: #7b5fff;
+    font-weight: 700;
+    margin-right: 15px;
+    font-size: 1.8em;
+}
+
+.cert-intro {
+    font-style: italic;
+    color: #555;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+.cert-data {
+    text-align: left;
+    margin-bottom: 40px;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f0f4ff;
+}
+
+.data-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px dotted #ccc;
+}
+
+.data-row:last-child {
+    border-bottom: none;
+}
+
+.data-row span:first-child {
+    font-weight: 600;
+    color: #444;
+}
+
+.value-primary {
+    color: #1a1a2e;
+    font-weight: 700;
+    font-size: 1.1em;
+}
+
+.value-secondary {
+    color: #333;
+}
+
+.value-hash {
+    font-family: monospace;
+    font-size: 0.9em;
+    word-break: break-all;
+    max-width: 60%;
+    text-align: right;
+}
+
+.certificate-footer p {
+    font-size: 0.9em;
+    color: #777;
+    margin-top: 15px;
+}
+
+.cert-signature {
+    margin-top: 30px !important;
+    font-size: 1.1em !important;
+    font-weight: 700;
+    color: #7b5fff !important;
+    text-decoration: underline;
+}
