@@ -126,11 +126,6 @@ contract MusicCopyrightRegistry is ERC721 {
         return songId;
     }
 
-    function tokenURI(uint256 tokenId) public view override returns (string memory) {
-        require(_exists(tokenId), "Token does not exist");
-        return _tokenURIs[tokenId];
-    }
-
     function payForAccess(uint256 _songId) external payable songExists(_songId) nonReentrant {
         require(msg.value == accessFee, "Must send exactly the access fee");
 
